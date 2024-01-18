@@ -5,6 +5,7 @@ import { IUserRepository } from '../repositories/user.repository';
 
 @Injectable()
 export class CreateUsersUseCase {
+	// private readonly logger = new Logger(CreateUsersUseCase.name);
 	constructor(private userRepository: IUserRepository) {}
 
 	async execute(data: CreateUserDTO) {
@@ -14,6 +15,7 @@ export class CreateUsersUseCase {
 		});
 
 		if (user) {
+			// this.logger.error(`User ${data.username} already exists...`, data);
 			throw new HttpException('User already exists!', HttpStatus.BAD_REQUEST);
 		}
 

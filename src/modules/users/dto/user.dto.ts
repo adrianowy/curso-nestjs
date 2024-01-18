@@ -11,3 +11,11 @@ export type UserCreatedDTO = {
 } & CreateUserDTO;
 
 export type UsernameAndEmail = Pick<CreateUserDTO, 'username' | 'email'>;
+
+export type FileDTO = {
+	fieldName: string;
+	originalName: string;
+	encoding: string;
+	mimetype: string;
+	buffer: Buffer;
+};
