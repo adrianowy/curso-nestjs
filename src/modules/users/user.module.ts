@@ -7,16 +7,16 @@ import { IUserRepository } from './repositories/user.repository';
 import { ProfileUserUseCase } from './useCases/profile-user.usecase';
 
 @Module({
-  imports: [],
-  controllers: [UserController],
-  providers: [
-    CreateUsersUseCase,
-    ProfileUserUseCase,
-    PrismaService,
-    {
-      provide: IUserRepository,
-      useClass: UserPrismaRepository,
-    },
-  ],
+	imports: [],
+	controllers: [UserController],
+	providers: [
+		CreateUsersUseCase,
+		ProfileUserUseCase,
+		PrismaService,
+		{
+			provide: IUserRepository,
+			useClass: UserPrismaRepository,
+		},
+	],
 })
 export class UserModule {}

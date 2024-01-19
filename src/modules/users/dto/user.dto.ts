@@ -19,3 +19,8 @@ export type FileDTO = {
 	mimetype: string;
 	buffer: Buffer;
 };
+
+export type AvatarDTO = {
+	idUser: string;
+	file: FileDTO;
+};

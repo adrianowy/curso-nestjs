@@ -3,6 +3,7 @@ import {
 	Controller,
 	Get,
 	Post,
+	Put,
 	Request,
 	UploadedFile,
 	UseGuards,
@@ -17,12 +18,14 @@ import {
 } from './schemas/create-user.schema';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FileDTO } from './dto/user.dto';
+import { UploadAvatarUseCase } from './useCases/upload-avatar.useCase';
 
 @Controller('/users')
 export class UserController {
 	constructor(
 		private readonly createUserUseCase: CreateUsersUseCase,
 		private readonly profileUseCase: ProfileUserUseCase,
+		private readonly avatarUserUseCase: UploadAvatarUseCase,
 	) {}
 
 	@Post()
@@ -38,10 +41,18 @@ export class UserController {
 		return this.profileUseCase.execute(req.user.sub);
 	}
 
-	@Post('/avatar')
+	@Put('/avatar')
 	@UseInterceptors(FileInterceptor('file'))
 	@UseGuards(AuthGuard)
 	async uploadAvatar(@Request() req, @UploadedFile() file: FileDTO) {
-		console.log(file);
+		// return await this.profileUseCase.execute({
+		// 	idUser: req.user.sub,
+		// 	file,
+		// });
+		console.log(req, file);
+
+		// Implementando supabase no usecase
+		// 03:09
+		0;
 	}
 }
